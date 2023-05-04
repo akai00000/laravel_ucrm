@@ -28,14 +28,21 @@ const showingNavigationDropdown = ref(false);
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex d-sm-none d-md-block">
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
+                                </NavLink>
+                                <!-- 追記 -->
+                                <NavLink :href="route('items.index')" :active="route().current('items.index')">
+                                    商品一覧
+                                </NavLink>
+                                <NavLink :href="route('items.create')" :active="route().current('items.create')">
+                                    商品登録
                                 </NavLink>
                             </div>
                         </div>
 
-                        <div class="hidden sm:flex sm:items-center sm:ml-6">
+                        <div class="sm:flex sm:items-center d-sm-none d-md-block">
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
                                 <Dropdown align="right" width="48">
@@ -107,13 +114,18 @@ const showingNavigationDropdown = ref(false);
                 </div>
 
                 <!-- Responsive Navigation Menu -->
-                <div
-                    :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }"
-                    class="sm:hidden"
-                >
+                <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
+                        </ResponsiveNavLink>
+                    <!-- 追記 -->
+                        <ResponsiveNavLink :href="route('items.index')" :active="route().current('items.index')">
+                            商品一覧
+                        </ResponsiveNavLink>
+                    <!-- 追記 -->
+                        <ResponsiveNavLink :href="route('items.create')" :active="route().current('items.create')">
+                            商品登録
                         </ResponsiveNavLink>
                     </div>
 

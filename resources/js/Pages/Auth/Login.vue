@@ -1,7 +1,8 @@
 <script setup>
 import Checkbox from '@/Components/Checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
+// import InputError from '@/Components/InputError.vue';
+import ValidationErrors from '@/Components/ValidationErrors.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
@@ -10,6 +11,7 @@ import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 defineProps({
     canResetPassword: Boolean,
     status: String,
+    errors: Object,
 });
 
 const form = useForm({
@@ -27,12 +29,12 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Log in" />
 
+        <Head title="Log in" />
+        <ValidationErrors :errors="errors" />
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
-
         <form @submit.prevent="submit">
             <div>
                 <InputLabel for="email" value="Email" />
@@ -47,7 +49,7 @@ const submit = () => {
                     autocomplete="username"
                 />
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <!-- <InputError class="mt-2" :message="form.errors.email" /> -->
             </div>
 
             <div class="mt-4">
@@ -62,7 +64,7 @@ const submit = () => {
                     autocomplete="current-password"
                 />
 
-                <InputError class="mt-2" :message="form.errors.password" />
+                <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
             </div>
 
             <div class="block mt-4">

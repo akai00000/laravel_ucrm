@@ -34,7 +34,6 @@ class InertiaTestController extends Controller
 
     public function store(Request $request)
     {
-
         $validated = $request->validate([
             'title' => ['required'],
             'content' => ['required'],

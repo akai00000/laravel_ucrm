@@ -1,5 +1,5 @@
 <script setup>
-
+import ValidationError from '@/Components/ValidationError.vue';
 import { reactive} from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 
@@ -17,12 +17,13 @@ const submitFunction = () => {
 </script>
 
 <template>
+    <ValidationError :errors="errors" />
     <!-- ↓preventでSPA化 -->
     <form @submit.prevent="submitFunction"> <!-- ここではaction, methodは入れない。jsで処理を書く-->
-        <input type="text" name="title" v-model="form.title"><br>
-        <div v-if="errors.title">{{ errors.title }}</div><br>
-        <input type="text" name="content" v-model="form.content"><br>
-        <div v-if="errors.content">{{ errors.content }}</div><br>
+        <input type="text" name="title"><br>
+        <!-- <div v-if="errors.title">{{ errors.title }}</div><br> -->
+        <input type="text" name="content"><br>
+        <!-- <div v-if="errors.content">{{ errors.content }}</div><br> -->
         <button>送信</button>
     </form>
 </template>
