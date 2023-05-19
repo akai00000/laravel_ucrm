@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InertiaTestController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,8 +36,12 @@ Route::get('/inertia/show/{id}', [InertiaTestController::class, 'show'])->name('
 Route::post('/inertia', [InertiaTestController::class, 'store'])->name('inertia.store');
 Route::delete('/inertia/{id}', [InertiaTestController::class, 'destroy'])->name('inertia.destroy');
 
-// itmes
+
+// items
 Route::resource('items', ItemController::class)
+->middleware(['auth', 'verified']);//ログインしてから表示させたいため、middlewareつけている。
+// customer
+Route::resource('customer', CustomerController::class)
 ->middleware(['auth', 'verified']);//ログインしてから表示させたいため、middlewareつけている。
 
 

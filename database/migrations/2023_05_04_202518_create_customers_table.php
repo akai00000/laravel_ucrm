@@ -13,12 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('memo')->nullable();
-            $table->integer('price');
-            $table->boolean('is_selling')->default(true);
+            $table->string('kana');
+            $table->string('tel')->unique();
+            $table->string('email');
+            $table->string('postcode');
+            $table->string('address');
+            $table->date('birthday')->nullable();
+            $table->tinyInteger('gender'); // 0男性, 1女性、2その他
+            $table->text('memo')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('customers');
     }
 };

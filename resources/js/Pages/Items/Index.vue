@@ -2,6 +2,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import FlashMessage from '@/Components/FlashMessage.vue';
+import NavLink from '@/Components/NavLink.vue';
 
 defineProps({
     items: Array
@@ -24,6 +25,11 @@ defineProps({
                         <section class="text-gray-600 body-font">
                             <div class="container px-5 py-10 mx-auto">
                                 <FlashMessage />
+                                <div class="mb-5 lg:w-3/4 w-full mx-auto overflow-auto py-5">
+                                        <Link as="butoon" :href="route('items.create')" class=" text-white bg-green-500 border-0 py-3 px-4 focus:outline-none hover:bg-green-600 rounded text-lg">
+                                            商品登録
+                                        </Link>
+                                    </div>
                                 <div class="lg:w-3/4 w-full mx-auto overflow-auto">
                                     <table class="table-auto w-full text-left whitespace-no-wrap">
                                         <thead>
